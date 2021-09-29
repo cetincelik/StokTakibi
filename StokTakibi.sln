@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StokTakibiEntities", "StokTakibi.Entities\StokTakibiEntities.csproj", "{8C50637E-A89E-4513-B4C2-7C6AA0E6BEF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StokTakibiCore", "Core\StokTakibiCore.csproj", "{5ACC884F-6EF7-45C9-A202-2CC893936CEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StokTakibiBusiness", "StokTakibi.Business\StokTakibiBusiness.csproj", "{EF1DADE2-2FED-458F-AEFA-72C8D4255FD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StokTakibiDataAccess", "StokTakibi.DataAccess\StokTakibiDataAccess.csproj", "{04A1BBA0-86B7-4EA5-8F8B-FEC77045BBE8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StokTakibiApi", "StokTakibiApi\StokTakibiApi.csproj", "{453EED39-3C8E-4D9F-AD75-5E045105D658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StokTakibiMvcWebUl", "StokTakibiMvcWebUl\StokTakibiMvcWebUl.csproj", "{0424E117-1127-4C0D-8070-4CF8B22B6392}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C50637E-A89E-4513-B4C2-7C6AA0E6BEF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C50637E-A89E-4513-B4C2-7C6AA0E6BEF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C50637E-A89E-4513-B4C2-7C6AA0E6BEF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C50637E-A89E-4513-B4C2-7C6AA0E6BEF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ACC884F-6EF7-45C9-A202-2CC893936CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ACC884F-6EF7-45C9-A202-2CC893936CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ACC884F-6EF7-45C9-A202-2CC893936CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ACC884F-6EF7-45C9-A202-2CC893936CEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF1DADE2-2FED-458F-AEFA-72C8D4255FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1DADE2-2FED-458F-AEFA-72C8D4255FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1DADE2-2FED-458F-AEFA-72C8D4255FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1DADE2-2FED-458F-AEFA-72C8D4255FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A1BBA0-86B7-4EA5-8F8B-FEC77045BBE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A1BBA0-86B7-4EA5-8F8B-FEC77045BBE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A1BBA0-86B7-4EA5-8F8B-FEC77045BBE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A1BBA0-86B7-4EA5-8F8B-FEC77045BBE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{453EED39-3C8E-4D9F-AD75-5E045105D658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{453EED39-3C8E-4D9F-AD75-5E045105D658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{453EED39-3C8E-4D9F-AD75-5E045105D658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{453EED39-3C8E-4D9F-AD75-5E045105D658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0424E117-1127-4C0D-8070-4CF8B22B6392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0424E117-1127-4C0D-8070-4CF8B22B6392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0424E117-1127-4C0D-8070-4CF8B22B6392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0424E117-1127-4C0D-8070-4CF8B22B6392}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F91D049-4F43-4F22-A100-E83BF4A362DF}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,68 @@
+﻿
+@model List<StokTakibiEntities.Concrete.Sepet>
+@{
+    ViewData["Title"] = "SatinAl";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="container">
+        <h4>Satin Alma Sayfası</h4>
+        <hr/>
+    </div>
+    <br />
+    @using (Html.BeginForm("SatinAl", "Satislar", FormMethod.Post, new { @class = "container" }))
+    {
+
+        foreach (var item in Model)
+        {
+            if (item.SilindiMi == false && item.AktifMi == true)
+            {
+                <div class="container">
+                    <div class="form-group">
+                        <h6> ID:@Html.DisplayFor(x => item.ID)</h6>
+                    </div>
+                    <div class="form-group">
+                        <h6> Ürün Adı:@Html.DisplayFor(x => item.Urunler.UrunAdi)</h6>
+                    </div>
+                    <div class="form-group">
+                        <h6> Bankod No:@Html.DisplayFor(x => item.Urunler.BankodNo)</h6>
+                    </div>
+                    <div class="form-group">
+                        <h6> Miktarı:@Html.DisplayFor(x => item.Miktari)</h6>
+                    </div>
+                    <div class="form-group">
+                        <h6> Birimi:@Html.DisplayFor(x => item.Urunler.Birimler.Birim)</h6>
+                    </div>
+                    <div class="form-group">
+                        <h6> Fiyatı:@Html.DisplayFor(x => item.BirimFiyati)</h6>
+                    </div>
+                    <div class="form-group">
+                        <h5 class="text-danger"> Toplam Fiyatı:@Html.DisplayFor(x => item.ToplamFiyati)</h5>
+                    </div>
+                    <hr/>
+
+                </div>
+            }
+
+        }
+
+
+        <div class="container">
+            <div><h5 class="text-danger text-center" >@ViewBag.Tutar</h5></div>
+            <div class="form-group" style="float: left">
+                <button class="btn btn-success">Onay</button>
+            </div>
+            <div>
+                <a href="/Sepet/Index" class="btn btn-dark" style="float: right">İptal</a>
+            </div>
+        </div>
+
+    }
+
+</div>
+
+
+
+
+
+

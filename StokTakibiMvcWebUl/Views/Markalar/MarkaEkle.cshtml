@@ -1,0 +1,42 @@
+﻿@using StokTakibiEntities.Concrete
+@model StokTakibiEntities.Concrete.Markalar
+@{
+    ViewData["Title"] = "MarkaEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h4>Marka Ekleme Sayfası</h4>
+<br />
+<form method="post">
+    <br />
+    <br />
+    <br />
+    @Html.ValidationSummary(false, null, new { @style = "color: red" })
+    <br />
+    @*<br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.Urunler.KategoriID, (List<SelectListItem>)ViewBag.kategori, "----Seçiniz----", new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Urunler.KategoriID, null, new { @style = "color:red" })
+
+    <br />*@  
+    @Html.Label("Marka Adı")
+    @Html.TextBoxFor(x => x.MarkaAdi, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.MarkaAdi, null, new { @style = "color:red" })
+    <br />
+    @Html.Label("Açıklama")
+    @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+    <br />
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>
+
+
+
+@section scriptdanger
+{
+    <script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

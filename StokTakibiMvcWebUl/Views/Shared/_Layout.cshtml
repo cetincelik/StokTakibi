@@ -1,0 +1,162 @@
+﻿@using StokTakibiMvcWebUl.ActiveFolder
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using StokTakibiEntities.Concrete
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="utf-8">
+
+
+    <title>ASP.NET MVC Core Stok Takip Otomasyonu</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="~/Script-Dosyalari/css/styledanger.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/LoginScript/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Stok Takip Otomasyonu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item px-lg-4                        ">
+                    <a class="nav-link" href="/Urunler/Index">
+                        Ürünler
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                
+                
+                
+
+
+                <li class="nav-item px-lg-4                        ">
+                    <a class="nav-link" href="/Satislar/Index">
+                        Satışlar
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                
+                
+
+                @*@if (User.IsInRole("A"))
+        {}*@
+                <li class="nav-item">
+
+                    <a class="nav-link  px-lg-4                 " href="/Kategoriler/Index/">Kategoriler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-lg-4               " href="/Markalar/Index/">Markalar</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link px-lg-4                      " href="/Birimler/Index/">Birimler</a>
+                </li>
+
+
+                @*<li class="nav-item">
+            <a class="nav-link px-lg-4" href="/Kullanicilar/Logout/">Çıkış</a>
+        </li>*@
+
+
+                @*<li class="nav-item">
+            <a class="nav-link px-lg-4" style="color: ActiveBorder">@User.Identity.Name</a>
+        </li>*@
+
+
+                <li class="nav-item">
+
+                    <div class="dropdown" style="color: darkgray">
+                        <a href="#" class="nav-link px-lg-4 dropdown" data-toggle="dropdown">
+                            @User.Identity.Name
+                            <i class="fa fa-caret-down" style="color: #ccc" aria-hidden="true"></i>
+
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/Sepet/Index/">
+                                Sepet
+                            </a>
+                            <a class="dropdown-item" href="/Kullanicilar/KayitGuncelle/">
+                                Bilgileri Güncelle
+                            </a>
+                            <a class="dropdown-item" href="/Kullanicilar/Logout/">
+                                Çıkış
+                            </a>
+                        </div>
+
+                    </div>
+
+                </li>
+
+                <li class="nav-item">
+                    <div style="position: relative">
+                        <a class="nav-link px-lg-4" href="/Sepet/Index/">
+                            <img src="~/LoginScript/images/shopping-cart.png" style="width: 30px; height: 30px" />
+
+                            <!--<label class="SepetUrunSayisi">-->
+                                @*  @Html.Partial("TotalCount", Sepet);*@
+                                <!--3
+
+                            </label>-->
+                        </a>
+                    </div>
+
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<style>
+    .SepetUrunSayisi {
+        background: #ea222f;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 400;
+        position: absolute;
+        left: 50px;
+        top: 3px;
+        height: 16px;
+        width: 16px;
+        text-align: center;
+        line-height: 16px;
+        border-radius: 8px;
+    }
+</style>
+
+    <!-- Page Content -->
+    <div class="container" style="margin-top:20px;">
+        <div class="row navbar-static-top">
+            @RenderBody()
+        </div>
+    </div>
+    <footer class="footer text-faded text-center py-xl-5 navbar-fixed-bottom">
+        <div class="container">
+            <div></div>
+            <p class="m-0 table-sm">Copyright &copy; Stok Takip Otomasyonu Web Sitesi</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Script-Dosyalari/Scripts/bootbox.min.js"></script>
+
+    @RenderSection("scriptdanger", false)
+    @RenderSection("scripts", false)
+</body>
+
+</html>

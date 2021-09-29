@@ -1,0 +1,47 @@
+﻿@model List<StokTakibiEntities.Concrete.Satislar>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Satiş Listesi</h1>
+
+<br />
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>ID</th>
+        <td>Kullanici Ad Soyad </td>
+        <td>Ürün Adi </td>
+        <td>Bankod No</td>
+        <td>Birim Fiyatı</td>
+        <td>Miktarı</td>
+        <td>Toplam Fiyatı</td>
+        <td>K.D.V</td>
+        <td>Birimi</td>
+        <td>Tarih</td>
+        <td>Saat</td>
+
+        <th></th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ID</td>
+            <td>@x.Sepet.Kullanicilar.AdiSoyadi</td>
+            <td>@x.Sepet.Urunler.UrunAdi</td>
+            <td>@x.BankodNo</td>
+            <td>@x.BirimFiyati</td>
+            <td>@x.Miktari</td>
+            <td>@x.ToplamFiyati</td>
+            <td>@x.KDV</td>
+            <td>@x.Sepet.Urunler.Birimler.Birim</td>
+            <td>@x.Tarih</td>
+            <td>@x.Saat</td>
+
+        </tr>
+    }
+</table>
+
+<script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.js"></script>
+

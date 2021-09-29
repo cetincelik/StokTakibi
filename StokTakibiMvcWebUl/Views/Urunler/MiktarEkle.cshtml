@@ -1,0 +1,24 @@
+﻿@model StokTakibiEntities.Concrete.Urunler
+@{
+    ViewData["Title"] = "MiktarEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ürün Miktarı Ekle</h1>
+
+<div class="container">
+    @using (Html.BeginForm("MiktarEkle", "Urunler", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.ID)
+            @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Miktari)
+            @Html.TextBoxFor(x => x.Miktari, new { @class = "form-control" })
+        </div>
+        <div>
+            <button class="btn btn-secondary">Miktar Ekle</button>
+        </div>
+    }
+</div>

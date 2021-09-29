@@ -1,0 +1,44 @@
+﻿@model List<StokTakibiEntities.Concrete.Birimler>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Birim Ana Sayfası</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Birim</td>
+            <td>Aciklama</td>
+            <td>Aktiflik Durumu</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.SilindiMi == false)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Birim</td>
+                    <td>@item.Aciklama</td>
+                    <td>@item.AktifMi&emsp;&emsp;&emsp;<a href="/Birimler/BirimAktifMi/@item.ID" class="btn btn-success">Aktiflik Durumu</a></td>
+                    <td><a href="/Birimler/BirimSil/@item.ID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Birimler/BirimGuncelle/@item.ID" class="btn btn-warning">Güncelle</a></td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+<td><a href="/Birimler/BirimEkle/" class="btn btn-success" style="margin-top: 10px;">Birim Ekle</a></td>
+
+
+
+

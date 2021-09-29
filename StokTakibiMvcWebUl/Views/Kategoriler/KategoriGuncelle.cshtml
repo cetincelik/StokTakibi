@@ -1,0 +1,34 @@
+﻿@model StokTakibiEntities.Concrete.Kategoriler
+@{
+    ViewData["Title"] = "KategoriGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h4>Kategori Güncelle</h4>
+<br />
+<form method="post">
+    <br />
+    <br />
+    <br />
+    @Html.ValidationSummary(false, null, new { @style = "color: red" })
+    <br />
+    <br/>
+    @Html.Label("Kategori Adı")
+    @Html.TextBoxFor(x => x.KategoriAdi, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.KategoriAdi, "", new {@style = "color:red"})
+    <br/>
+    @Html.Label("Açıklama")
+    @Html.TextBoxFor(x => x.Aciklama, new {@class = "form-control"})
+    <br/>
+    <br/>
+    <button class="btn btn-info">Kaydet</button>
+</form>
+
+@section scriptdanger
+{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.min.js"></script>
+
+}

@@ -1,0 +1,47 @@
+﻿@using StokTakibiEntities.Concrete
+@model List<StokTakibiEntities.Concrete.Kategoriler>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Kategori Ana Sayfası</h1>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Kategori</td>
+        <td>Aciklama</td>
+        <td>Aktiflik Durumu</td>
+        <td>Sil</td>
+        <td>Güncelle</td>
+    </tr>
+    </thead>
+    
+    <tbody>
+    @foreach (var item in Model)
+    {
+        if (item.SilindiMi == false)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.KategoriAdi</td>
+                <td>@item.Aciklama</td>
+                <td>@item.AktifMi&emsp;&emsp;&emsp;<a href="/Kategoriler/KategoriAktifMi/@item.ID" class="btn btn-success">Aktiflik Durumu</a></td>
+                <td><a href="/Kategoriler/KategoriSil/@item.ID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Kategoriler/KategoriGuncelle/@item.ID" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+            
+        }
+            
+    }
+
+    </tbody>
+</table>
+<td><a href="/Kategoriler/KategoriEkle/" class="btn btn-success" style="margin-top: 10px;">Kategori Ekle</a></td>
+
+<script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.js"></script>
+
+

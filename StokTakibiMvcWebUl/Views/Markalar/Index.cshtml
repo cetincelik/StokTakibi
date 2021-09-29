@@ -1,0 +1,54 @@
+﻿@model List<StokTakibiEntities.Concrete.Markalar>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h2>Marka Listesi</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+     @*   <th>Kategori ID</th>*@
+        <th>Marka Adı</th>
+        <th>Açıklama</th>
+        <th>Aktiflik Durumu</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        if (x.SilindiMi == false)
+        {
+            <tr>
+                <td>@x.ID</td>
+              @*  <td>@x.Urunler.Kategoriler.KategoriAdi</td>*@
+                <td>@x.MarkaAdi</td>
+                <td>@x.Aciklama</td>
+                <td>
+                    @x.AktifMi&emsp;&emsp;&emsp;<a class="btn btn-success btn-sm" href="/Markalar/MarkaAktifMi/@x.ID">
+                        <i class="fas fa-trash"></i>
+                        Akiflik Durumu
+                    </a>
+                </td>
+            
+                <td>
+                    <a class="btn btn-danger btn-sm" href="/Markalar/MarkaSil/@x.ID">
+                        <i class="fas fa-trash"></i>
+                        Sil
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="/Markalar/MarkaGuncelle/@x.ID">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                        Düzenle
+                    </a>
+                </td>
+            </tr>
+        }
+        
+    }
+</table>
+<a href="/Markalar/MarkaEkle" class="btn btn-primary">Yeni Marka Bilgisi Ekle</a>

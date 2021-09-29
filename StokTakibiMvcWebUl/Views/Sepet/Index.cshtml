@@ -1,0 +1,128 @@
+﻿@model List<StokTakibiEntities.Concrete.Sepet>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="container">@User.Identity.Name</h2>
+<h2 class="container">Sepetim</h2>
+
+<table class="table table-bordered">
+    <thead style="background-color: aliceblue">
+        <tr>
+            <td>Urun Bilgisi</td>
+            <td>Alış Fiyatı</td>
+            <td>Urun Miktarı </td>
+            <td>Toplam Fiyat</td>
+            <td>Tarih</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+            if (x.SilindiMi == false && x.AktifMi == true )
+            {
+                <tr>
+
+                    <td>@x.Urunler.Kategoriler.KategoriAdi @x.Urunler.Markalar.MarkaAdi @x.Urunler.BankodNo - @x.Urunler.UrunAdi</td>
+                    <td>@x.BirimFiyati</td>
+                    <td>
+                        <div>
+                            @Html.ActionLink("-", "Azalt", new { id = x.ID }, new { @class = "btn btn-secondary btn-sm azalt" })
+                        </div>
+                        @Html.TextBoxFor(p => x.Miktari, new { @class = "txt",data_id = x.ID})
+                        <div>
+                            @Html.ActionLink("+", "Arttir", new { id = x.ID }, new { @class = "btn btn-info btn-sm arttir" })
+                        </div>
+                    </td>
+                    <td>@x.ToplamFiyati</td>
+                    <td>@x.Tarih.ToString("dd.MM.yyyy")</td>
+                    <td>
+                    </td>
+
+                    <td>@Html.ActionLink("Sil", "Sil", new { id = x.ID }, new { @class = "btn btn-danger" })</td>
+                  
+
+
+                </tr>
+            }
+
+        }
+    </tbody>
+
+</table>
+<script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.js"></script>
+
+
+<div class="container">
+    @ViewBag.Tutar
+</div>
+<br />
+<br />
+
+<a href="/Satislar/SatinAl" class="btn btn-success">Satın Al</a>
+<br />
+
+@*<div class=" container form-group">
+    @Html.ActionLink("Hepsini Sil", "HepsiniSil", null, new { @class = "btn btn-danger form-control" })
+
+</div>
+
+
+<br />
+<div class="container form-group">
+    @Html.ActionLink("Satın Al", "SatinAl", null, new { @class = "btn btn-success form-control" })
+
+</div>*@
+
+<style>
+    .txt {
+        line-height: 18px;
+        width: 50px !important;
+        height: 32px;
+        font-size: 14px;
+        text-align: center;
+        border: solid 1px #ccc;
+        margin-left: 23px;
+    }
+
+    .arttir {
+        display: block;
+        cursor: pointer;
+        border: solid 1px #ccc;
+        position: absolute;
+        margin-top: -32px;
+        margin-left: 72px;
+    }
+
+    .azalt {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+    }
+</style>
+
+<script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(function() {
+        $('.txt').on('change',
+            function () {
+                var miktar = $(this).val();
+                var sepetid = $(this).attr('data-id');
+                /*alert("SepetID"+sepetid+" Miktarı="+miktar);*/
+                $.ajax({
+                    url: '/Sepet/DinamikMiktar/',
+                    data: { id: sepetid, miktari: miktar },
+                    success: function(res) {
+                        document.location.reload();
+                    }
+                });
+            });
+    });
+
+</script>

@@ -1,0 +1,136 @@
+﻿@using StokTakibiEntities.Concrete
+@model List<StokTakibiEntities.Concrete.Urunler>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <div style="width: 25%;float:left">
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Aranacak ürün adı veya barkod " })
+            </div>
+            <div style="float: left;margin-left: 5px">
+                @Html.ActionLink("Ara", "Index", "Urunler", new { @class = "btn btn-info", onclick = "$(this).parents('form').attr('action', $(this).attr('href'));$(this).parents('form').submit();return false;" })
+            </div>
+
+        </div>
+    }
+</div>
+
+
+<br />
+<br />
+
+
+<br />
+<h2>Ürünler Listesi</h2>
+<br />
+<br />
+
+<table class="table table-bordered" id="urun">
+    <tr>
+        <th>ID</th>
+        <th>Kategori </th>
+        <th>Marka </th>
+        <th>Birim </th>
+        <th>Ürün </th>
+        <th>Bankod No</th>
+        <th>Alış Fiyatı</th>
+        <th>Satış Fiyatı</th>
+        <th>Miktar</th>
+        <th>K.D.V</th>
+        <th>Tarih</th>
+        <th>Açıklama</th>
+        <th>Aktiflik Durumu</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+        <th></th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        if (x.SilindiMi == false)
+        {
+            <tr>
+                <td>@x.ID</td>
+                <td>@x.Kategoriler.KategoriAdi</td>
+                <td>@x.Markalar.MarkaAdi</td>
+                <td>@x.Birimler.Birim</td>
+                <td>@x.UrunAdi</td>
+                <td>@x.BankodNo</td>
+                <td>@x.AlisFiyati</td>
+                <td>@x.SatisFiyati</td>
+                <td>
+                    @x.Miktari&emsp;&emsp;&emsp;<a class="btn btn-success btn-sm" href="/Urunler/MiktarEkle/@x.ID">
+                        <i class="fas fa-trash"></i>
+                        Miktar Ekle
+                    </a>
+                </td>
+                <td>% @x.KDV</td>
+                <td>@x.Tarih.ToString("MM/dd/yyyy")</td>
+                <td>@x.Aciklama</td>
+                <td>
+                    @x.AktifMi&emsp;&emsp;&emsp;<a class="btn btn-success btn-sm" href="/Urunler/UrunAktifMi/@x.ID">
+                        <i class="fas fa-pencil-alt"></i>
+                        Akiflik Durumu
+                    </a>
+                </td>
+
+                <td>
+                    <a class="btn btn-danger btn-sm" href="/Urunler/UrunSil/@x.ID">
+                        <i class="fas fa-pencil-alt"></i>
+                        Sil
+                    </a>
+                </td>
+                @*<td><input type="submit" name="btn" value="UrunSil" class="btn btn-danger btnSil" data-id="@x.ID" /></td>*@
+                <td>
+                    <a class="btn btn-info btn-sm" href="/Urunler/UrunGuncelle/@x.ID">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                        Düzenle
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="/Sepet/SepeteEkle/@x.ID">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                        Sepete Ekle
+                    </a>
+                </td>
+            </tr>
+        }
+
+    }
+</table>
+<a href="/Urunler/UrunEkle" class="btn btn-primary">Yeni Urun Bilgisi Ekle</a>
+
+<script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.js"></script>
+
+@*<script type="text/javascript">
+        $(function () {
+            $("#urun").on("click",
+                ".btnSil",
+                function () {
+                    var btn = $(this);
+                    bootbox.config(btn.data("id") + " nolu ID kaydı silinsin mi?",
+                        function (result) {
+                            if (result) {
+                                var id = btn.data("id");
+                                $.ajax({
+                                    type: "GET",
+                                    url: "/Urunler/UrunSil",
+                                    data: { id: id },
+                                    success: function () {
+                                        btn.parent().parent().remove();
+                                    }
+
+                                });
+                            }
+                        });
+                });
+        });
+
+    </script>*@

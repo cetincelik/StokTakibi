@@ -1,0 +1,66 @@
+﻿@model StokTakibiEntities.Concrete.Kullanicilar
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kaydol</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Script-Dosyalari/css/styledanger.css" rel="stylesheet" />
+
+</head>
+<body class="container col-md-3">
+    <br />
+    <h4>Kullanıcı Kayıt Sayfası</h4>
+
+    <form method="post">
+        @Html.ValidationSummary(false, null, new { @style = "color: red" })
+        <br />
+        @Html.Label("Kullanıcı Adı")
+        @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.KullaniciAdi, null, new { @style = "color:red" })
+        <br />
+        @Html.Label("Şifre")
+        @Html.PasswordFor(x => x.Sifre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Sifre, null, new { @style = "color:red" })
+        <br />
+        @Html.Label("Adı Soyadı")
+        @Html.TextBoxFor(x => x.AdiSoyadi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.AdiSoyadi, null, new { @style = "color:red" })
+        <br />
+        @Html.Label("Telefon Numarası")
+        @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Telefon, null, new { @style = "color:red" })
+        <br />
+        @Html.Label("Adres")
+        @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Adres, null, new { @style = "color:red" })
+        <br />
+        @Html.Label("E-mail")
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Email, null, new { @style = "color:red" })
+        <br />
+        @Html.Label("Tarih")
+        @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(x => x.Tarih, null, new { @style = "color:red" })
+
+
+        <br />
+        <br />
+        <button class="btn btn-info  form-control">Kaydet</button>
+    </form>
+
+</body>
+</html>
+
+<script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+

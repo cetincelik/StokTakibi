@@ -1,0 +1,107 @@
+﻿@model StokTakibiEntities.Concrete.Urunler
+@{
+    ViewData["Title"] = "UrunEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h4>Urun Ekleme Sayfası</h4>
+<br />
+<form method="post">
+    <br />
+    <br />
+    <br />
+    @Html.ValidationSummary(false, null, new { @style = "color: red" })
+    <br />
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownList("kategoriID", (List<SelectListItem>)ViewBag.kategori, "----Seçiniz----", new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KategoriID, null, new { @style = "color:red" })
+
+    <br />
+    @Html.Label("Marka")
+    @Html.DropDownList("markaID", (List<SelectListItem>)ViewBag.marka, "----Seçiniz----", new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.MarkaID, null, new { @style = "color:red" })
+
+    <br />
+    @Html.Label("Birim")
+    @Html.DropDownList("birimID", (List<SelectListItem>)ViewBag.birim, "----Seçiniz----", new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BirimID, null, new { @style = "color:red" })
+
+    <br />
+    @Html.Label("Urun Adı")
+    @Html.TextBoxFor(x => x.UrunAdi, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.UrunAdi, null, new { @style = "color:red" })
+    <br />
+    @Html.Label("Bankod No")
+    @Html.TextBoxFor(x => x.BankodNo, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BankodNo, null, new { @style = "color:red" })
+
+    <br />
+    @Html.Label("Alış Fiyatı")
+    @Html.TextBoxFor(x => x.AlisFiyati, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AlisFiyati, null, new { @style = "color:red" })
+    <br />
+    @Html.Label("Satış Fiyatı")
+    @Html.TextBoxFor(x => x.SatisFiyati, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.SatisFiyati, null, new { @style = "color:red" })
+    <br />
+    @Html.Label("Miktari")
+    @Html.TextBoxFor(x => x.Miktari, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Miktari, null, new { @style = "color:red" })
+    <br />
+    @Html.Label("KDV")
+    @Html.TextBoxFor(x => x.KDV, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KDV, null, new { @style = "color:red" })
+    <br />
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", type = "date" })
+    @Html.ValidationMessageFor(x => x.Tarih, null, new { @style = "color:red" })
+
+
+    <br />
+
+
+    @Html.Label("Açıklama")
+    @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+
+    <br />
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>
+@section scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#KategoriID").change(function () {
+
+                var ID = $("#KategoriID").val();
+                var markalist = $("#MarkaID");
+                markalist.empty();
+                $.ajax({
+                    url: '/Urunler/GetMarka',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { 'id': ID },
+                    success: function (data) {
+                        $.each(data, function (index, option) {
+                            markalist.append('<option value=' + option.Value + '>' + option.Test + '<option')
+                        });
+                    }
+                });;
+            });
+        });
+
+    </script>
+
+}
+@section scriptdanger
+{
+    <script src="~/Script-Dosyalari/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Script-Dosyalari/ondalik.js"></script>
+
+}
